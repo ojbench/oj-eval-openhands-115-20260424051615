@@ -41,7 +41,7 @@ class unique_ptr {
     // 注意移交后要把 other 置空。
     unique_ptr &operator=(unique_ptr &&other) {
         if (this != &other) {
-            delete ptr;  // Release current resource
+            reset();  // Release current resource safely
             ptr = other.ptr;
             other.ptr = nullptr;
         }
